@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 /**
  * on récupère express
  * on récupère les middlewares de sécurité helmet et cors
@@ -37,6 +39,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/todos', require('./src/routes/todos'))
+app.use('/auth', require('./src/routes/auth'))
 
 app.listen(port, () => {
   console.log('Server is listenning on port : ' + port)
