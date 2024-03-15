@@ -16,7 +16,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  files: [{
+  todos: [{
     type: Schema.Types.ObjectId,
     ref: 'Todo'
   }]
