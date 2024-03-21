@@ -1,5 +1,4 @@
 const { loginUser, signupUser } = require('../Controllers/AuthController')
-
 const router = require('express').Router()
 
 router.route('/login')
@@ -23,7 +22,6 @@ router.route('/register')
     try {
       const credentials = req.body
       await signupUser(credentials, (error, result) => {
-        console.log('AUTH_CREDENTIALS')
         if (error) {
           return res.status(403).send(error)
         }
