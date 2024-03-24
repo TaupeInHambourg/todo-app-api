@@ -58,6 +58,11 @@ const signupUser = async (credentials, callback) => {
   }
 
   const user = await User.findOne({ email: credentials.email })
+
+  if (user) {
+    console.log('User already exist')
+  }
+
   if (!user) {
     const _user = new User({
       firstName: credentials.firstName,
@@ -75,6 +80,8 @@ const signupUser = async (credentials, callback) => {
     const payload = {
       id: _user.id
     }
+
+    console.log('User created', savedUserObject)
 
     // On créé le token
     jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '7d' }, (error, token) => {
